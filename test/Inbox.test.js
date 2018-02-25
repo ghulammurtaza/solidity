@@ -26,5 +26,12 @@ describe('Inbox', () => {
   it('has a default function', async () => {
     const  message = await inbox.methods.message().call();
     assert.equal(message, 'Hi there');
+  });
+
+  it('can change the message', async () => {
+    await inbox.methods.setMessage('loving it').send({from:accounts[0]});
+    const message = await inbox.methods.message().call();
+    assert.equal(message, 'loving it');
+
   })
 });
