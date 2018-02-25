@@ -3,29 +3,14 @@ const ganache = require('ganache-cli');
 const Web3 = require('web3'); //web3 require needs to call through constructor function
 const web3 = new Web3(ganache.provider());
 
+beforeEach(() => {
+  web3.eth.getAccounts()
+      .then(fetchedAccounts => {
+        console.log(fetchedAccounts);
+      });
+});
 
-class  Car {
-  park() {
-    return 'stopped';
-  }
-
-  drive() {
-    return 'vroom';
-  }
-}
-
-let car;
-
-beforeEach(()=> {
-  car = new Car();
-})
-
-describe('Car', () => {
-  it('can Park', () => {
-    assert.equal(car.park(), 'stopped')
-  });
-
-  it('can Drive', () => {
-    assert.equal(car.drive(), 'vroom');
+describe('Inbox', () => {
+  it('deploys a new contract', () => {
   });
 });
