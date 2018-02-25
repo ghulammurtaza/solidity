@@ -18,7 +18,13 @@ beforeEach(async () => {
 });
 
 describe('Inbox', () => {
+  //make sure contract has been deployed
   it('deploys a new contract', () => {
-    console.log(inbox);
+    assert.ok(inbox.options.address);
   });
+
+  it('has a default function', async () => {
+    const  message = await inbox.methods.message().call();
+    assert.equal(message, 'Hi there');
+  })
 });
