@@ -5,7 +5,7 @@
  * authors: Julia Altenried, Yuri Kashnikov
  * */
 
-pragma solidity 0.4.19;
+pragma solidity ^0.4.19;
 
 /**
  * @title SafeMath
@@ -289,7 +289,7 @@ contract DoradoToken is StandardToken, Owned {
 
     /// token caps for each round
     uint256[7] private roundCaps = [
-        70000000000000000000000, // HOT sale  70000000 * 10**15
+        70000000000000000000000, // HOT sale  070000000 * 10**15
         140000000000000000000000, // Sale A   140000000 * 10**15
         210000000000000000000000, // Sale B   210000000 * 10**15
         285000000000000000000000, // Sale C   285000000 * 10**15
@@ -380,7 +380,8 @@ contract DoradoToken is StandardToken, Owned {
         require(_beneficiary != address(0));
 
         // increase token total supply
-        totalSupply = totalSupply.add(_tokens);
+        totalSupply =
+        .add(_tokens);
         // update the beneficiary balance to number of tokens sent
         balances[_beneficiary] = balances[_beneficiary].add(_tokens);
 

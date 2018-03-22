@@ -13,25 +13,20 @@ beforeEach(async () => {
 
  // use one of the available accounts to deploy contract;
  inbox = await new web3.eth.Contract(JSON.parse(interface))
-     .deploy({'data': bytecode, 'arguments': ['Hi there']})
-     .send({'from': accounts[0], 'gas' : 1000000});
+     .deploy({'data': bytecode, 'arguments': []})
+     .send({'from': accounts[0], 'gas' : 3000000});
 });
 
-describe('Inbox', () => {
+describe('Scalifyt4Token', () => {
   //make sure contract has been deployed
   it('deploys a new contract', () => {
     assert.ok(inbox.options.address);
   });
 
-  it('has a default function', async () => {
-    const  message = await inbox.methods.message().call();
-    assert.equal(message, 'Hi there');
+  it('current round index', async () => {
+    const  message = await inbox.methods.currentRoundIndexByDate().call();
+    console.log(message);
   });
 
-  it('can change the message', async () => {
-    await inbox.methods.setMessage('loving it').send({from:accounts[0]});
-    const message = await inbox.methods.message().call();
-    assert.equal(message, 'loving it');
 
-  })
 });
